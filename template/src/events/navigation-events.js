@@ -1,6 +1,9 @@
 import { CONTAINER_SELECTOR, HOME } from '../common/constants.js';
 import { toHomeView } from '../views/home-view.js';
 import { toMoviesFromCategoryView } from '../views/movie-views.js';
+import { toFavoritesView } from '../views/favorites-view.js';
+import { loadCategory, loadMovies } from '../requests/request-service.js';
+import { getFavorites } from '../data/favorites.js';
 import { q, setActiveNav } from './helpers.js';
 
 // public API
@@ -25,7 +28,8 @@ export const renderMovieDetails = (id = null) => {
 };
 
 export const renderCategory = (categoryId = null) => {
-  // missing partial implementation
+  const category = loadCategory(categoryId);
+  const movies = loadMovies(categoryId);
 
   q(CONTAINER_SELECTOR).innerHTML = toMoviesFromCategoryView(category, movies);
 };
@@ -41,7 +45,10 @@ const renderCategories = () => {
 };
 
 const renderFavorites = () => {
-  // missing implementation
+  const favoriteIds = getFavorites();
+  const favoriteMovies = loadMovies().filter(movie => favoriteIds.includes(movie.id));
+
+  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(favoriteMovies);
 };
 
 const renderAbout = () => {

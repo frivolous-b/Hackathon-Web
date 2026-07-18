@@ -12,11 +12,10 @@ export const FULL_HEART = '❤';
 
 export const EMPTY_HEART = '♡';
 
-// element classes used for event delegation in index.js
-export const FAVORITE_CLASS = 'favorite';
-export const MOVIE_BTN_CLASS = 'movie-btn';
-export const CATEGORY_BTN_CLASS = 'category-btn';
+export const CATEGORY_BTN_CLASS = 'buttonCategories';
 
-// data-* attribute names shared between views (writers) and index.js (reader)
-export const MOVIE_ID_ATTR = 'data-movie-id';
 export const CATEGORY_ID_ATTR = 'data-category-id';
+
+export const MOVIE_BTN_CLASS = 'buttonMovie';
+
+export const MOVIE_ID_ATTR = 'data-movie-id';

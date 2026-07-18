@@ -1,8 +1,10 @@
-import { CONTAINER_SELECTOR, HOME } from '../common/constants.js';
+import { ABOUT, CATEGORIES, CONTAINER_SELECTOR, FAVORITES, HOME } from '../common/constants.js';
+import { toAboutView } from '../views/about-view.js';
+import { toCategoriesView } from '../views/category-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { toMoviesFromCategoryView } from '../views/movie-views.js';
 import { toFavoritesView } from '../views/favorites-view.js';
-import { loadCategory, loadMovies } from '../requests/request-service.js';
+import { loadCategories, loadCategory, loadMovies } from '../requests/request-service.js';
 import { getFavorites } from '../data/favorites.js';
 import { q, setActiveNav } from './helpers.js';
 
@@ -15,7 +17,17 @@ export const loadPage = (page = '') => {
       setActiveNav(HOME);
       return renderHome();
 
-      // missing partial implementation
+    case CATEGORIES:
+      setActiveNav(CATEGORIES);
+      return renderCategories();
+
+    case FAVORITES:
+      setActiveNav(FAVORITES);
+      return renderFavorites();
+
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return renderAbout();
 
     /* if the app supports error logging, use default to log mapping errors */
     default: return null;
@@ -41,7 +53,8 @@ const renderHome = () => {
 };
 
 const renderCategories = () => {
-  // missing implementation
+  const categories = loadCategories();
+  q(CONTAINER_SELECTOR).innerHTML = toCategoriesView(categories);
 };
 
 const renderFavorites = () => {
@@ -52,5 +65,5 @@ const renderFavorites = () => {
 };
 
 const renderAbout = () => {
-  // missing implementation
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };

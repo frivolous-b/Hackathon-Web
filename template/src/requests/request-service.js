@@ -1,7 +1,8 @@
 import { getCategories, getMoviesGeneralInfo, getMovieById, getCategory, searchMovies } from '../data/movies.js';
 
 export const loadCategories = () => {
-  // missing implementation
+  const categories = getCategories();
+  return categories;
 };
 
 export const loadCategory = (id = null) => {

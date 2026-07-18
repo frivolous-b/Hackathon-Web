@@ -12,7 +12,7 @@ export const loadCategory = (id = null) => {
 }
 
 export const loadMovies = (categoryId = null) => {
-  // missing implementation
+  return getMoviesGeneralInfo(categoryId);
 };
 
 export const loadSingleMovie = (id) => {

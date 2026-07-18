@@ -1,4 +1,5 @@
 import { renderFavoriteStatus } from '../events/favorites-events.js';
+import { MOVIE_BTN_CLASS, MOVIE_ID_ATTR } from '../common/constants.js';
 
 export const toMoviesFromCategoryView = (category, movies) => `
 <div id="movies">
@@ -14,7 +15,15 @@ export const toSingleMovieView = (movie) => `
 `;
 
 export const toMovieSimple = (movie) => `
-<!-- your template here -->
+<div class="movie-simple">
+  <img src="${movie.poster}" alt="${movie.title} poster" />
+  <div class="movie-info">
+    <h3>${movie.title} <span class="year">(${movie.year})</span></h3>
+    <p class="genre">${movie.genre}</p>
+    <button class="${MOVIE_BTN_CLASS}" ${MOVIE_ID_ATTR}="${movie.id}">Details</button>
+    ${renderFavoriteStatus(movie.id)}
+  </div>
+</div>
 `;
 
 const toMovieDetailed = (movie) => `

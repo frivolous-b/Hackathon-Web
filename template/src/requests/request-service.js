@@ -16,9 +16,13 @@ export const loadMovies = (categoryId = null) => {
 };
 
 export const loadSingleMovie = (id) => {
-  // missing implementation
+  const movie = getMovieById(id);
+
+  return movie;
 };
 
 export const loadSearchMovies = (searchTerm = '') => {
-  // missing implementation
+  const movies = searchMovies(searchTerm);
+
+  return movies;
 };

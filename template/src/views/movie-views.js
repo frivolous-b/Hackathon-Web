@@ -11,7 +11,7 @@ export const toMoviesFromCategoryView = (category, movies) => `
 `;
 
 export const toSingleMovieView = (movie) => `
-<!-- your template here, you can use toMovieDetailed(movie) -->
+${toMovieDetailed(movie)}
 `;
 
 export const toMovieSimple = (movie) => `
@@ -27,5 +27,14 @@ export const toMovieSimple = (movie) => `
 `;
 
 const toMovieDetailed = (movie) => `
-<!-- your template here -->
+<div class="movie-details">
+  <img src="${movie.poster}" alt="${movie.title}">
+  <div class="movie-details-info">
+    <h1>${movie.title}</h1>
+    <p>${movie.year} | ${movie.genre}</p>
+    <p>${movie.description}</p>
+    <p>Director: ${movie.director}</p>
+    <p>Stars: ${movie.stars.join(', ')}</p>
+  </div>
+</div>
 `;

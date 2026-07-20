@@ -2,9 +2,9 @@ import { ABOUT, CATEGORIES, CONTAINER_SELECTOR, FAVORITES, HOME } from '../commo
 import { toAboutView } from '../views/about-view.js';
 import { toCategoriesView } from '../views/category-view.js';
 import { toHomeView } from '../views/home-view.js';
-import { toMoviesFromCategoryView } from '../views/movie-views.js';
+import { toMoviesFromCategoryView, toSingleMovieView } from '../views/movie-views.js';
 import { toFavoritesView } from '../views/favorites-view.js';
-import { loadCategories, loadCategory, loadMovies } from '../requests/request-service.js';
+import { loadCategories, loadCategory, loadMovies, loadSingleMovie } from '../requests/request-service.js';
 import { getFavorites } from '../data/favorites.js';
 import { q, setActiveNav } from './helpers.js';
 
@@ -36,7 +36,9 @@ export const loadPage = (page = '') => {
 };
 
 export const renderMovieDetails = (id = null) => {
-  // missing implementation
+  const movie = loadSingleMovie(id);
+
+  q(CONTAINER_SELECTOR).innerHTML = toSingleMovieView(movie);
 };
 
 export const renderCategory = (categoryId = null) => {
